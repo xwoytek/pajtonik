@@ -457,7 +457,6 @@ def runda():
     global iloscatak3
     global iloscatak4
     global money
-    slic = slice(0,3)
     losowanko()
     while True:
         print('Twój przeciwnik to:',nameenemy)
