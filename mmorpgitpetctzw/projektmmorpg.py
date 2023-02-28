@@ -103,11 +103,67 @@ class olbrzym:
         self.przeciwnik.slaboscii.slaboscziemi = False
         
 
-class sklep:
+
+
+class currentenemy:
+    def __init__(self) -> None:
+        self.przeciwnicy = [krasnal(),goblin(),nimfa(),rycerz(),olbrzym()]
+        self.przeciwniktera = (choice(self.przeciwnicy))
+        self.przeciwnikstaty = przeciwnik(0,0,'')
+    def losojprzeciwnik(self):
+        self.przeciwniktera = choice(self.przeciwnicy)
+        self.przeciwnikstaty.basicdata()
+    def koniec(self):
+        if 'krasnal' in str(self.przeciwniktera):
+            return 10+len('krasnal')
+        if 'goblin' in str(self.przeciwniktera):
+            return 10+len('goblin')
+        if 'nimfa' in str(self.przeciwniktera):
+            return 10+len('nimfa')
+        if 'rycerz' in str(self.przeciwniktera):
+            return 10+len('rycerz')
+        if 'olbrzym' in str(self.przeciwniktera):
+            return 10+len('olbrzym')
+    def jakipokemon(self):
+        if 'krasnal' in str(self.przeciwniktera):
+            self.przeciwnikstaty.imieprzeciwnik = 'Krasnal'
+            self.przeciwnikstaty.slaboscii.slaboscognia = True
+            self.przeciwnikstaty.slaboscii.slaboscwody = False
+            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
+            self.przeciwnikstaty.slaboscii.slaboscziemi = False
+        if 'goblin' in str(self.przeciwniktera):
+            self.przeciwnikstaty.imieprzeciwnik = 'Goblin'
+            self.przeciwnikstaty.slaboscii.slaboscognia = True
+            self.przeciwnikstaty.slaboscii.slaboscwody = True
+            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
+            self.przeciwnikstaty.slaboscii.slaboscziemi = False
+        if 'nimfa' in str(self.przeciwniktera):
+            self.przeciwnikstaty.imieprzeciwnik = 'Nimfa'
+            self.przeciwnikstaty.slaboscii.slaboscognia = False
+            self.przeciwnikstaty.slaboscii.slaboscwody = False
+            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
+            self.przeciwnikstaty.slaboscii.slaboscziemi = True
+        if 'rycerz' in str(self.przeciwniktera):
+            self.przeciwnikstaty.imieprzeciwnik = 'Rycerz'
+            self.przeciwnikstaty.slaboscii.slaboscognia = True
+            self.przeciwnikstaty.slaboscii.slaboscwody = True
+            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
+            self.przeciwnikstaty.slaboscii.slaboscziemi = True
+        if 'olbrzym' in str(self.przeciwniktera):
+            self.przeciwnikstaty.imieprzeciwnik = 'Olbrzym'
+            self.przeciwnikstaty.slaboscii.slaboscognia = False
+            self.przeciwnikstaty.slaboscii.slaboscwody = False
+            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
+            self.przeciwnikstaty.slaboscii.slaboscziemi = False
+
+class bitka:
     def __init__(self) -> None:
         self.gracz = gracz('',100,0,0,10,100,0,0)
+        self.enemy = currentenemy()
+        
     def rundawsklepie(self):
-        self.gracz.gold += randint(1,100)
+        for i in range(self.gracz.killcount):
+            self.gracz.gold += randint(1,100)
         cenarunyognia = 10
         cenarunywody = 10
         cenarunypowietrza = 10
@@ -189,64 +245,6 @@ class sklep:
                 break
             else:
                 print('eeeee co? \n')
-
-class currentenemy:
-    def __init__(self) -> None:
-        self.przeciwnicy = [krasnal(),goblin(),nimfa(),rycerz(),olbrzym()]
-        self.przeciwniktera = (choice(self.przeciwnicy))
-        self.przeciwnikstaty = przeciwnik(0,0,'')
-    def losojprzeciwnik(self):
-        self.przeciwniktera = choice(self.przeciwnicy)
-        self.przeciwnikstaty.basicdata()
-    def koniec(self):
-        if 'krasnal' in str(self.przeciwniktera):
-            return 10+len('krasnal')
-        if 'goblin' in str(self.przeciwniktera):
-            return 10+len('goblin')
-        if 'nimfa' in str(self.przeciwniktera):
-            return 10+len('nimfa')
-        if 'rycerz' in str(self.przeciwniktera):
-            return 10+len('rycerz')
-        if 'olbrzym' in str(self.przeciwniktera):
-            return 10+len('olbrzym')
-    def jakipokemon(self):
-        if 'krasnal' in str(self.przeciwniktera):
-            self.przeciwnikstaty.imieprzeciwnik = 'Krasnal'
-            self.przeciwnikstaty.slaboscii.slaboscognia = True
-            self.przeciwnikstaty.slaboscii.slaboscwody = False
-            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
-            self.przeciwnikstaty.slaboscii.slaboscziemi = False
-        if 'goblin' in str(self.przeciwniktera):
-            self.przeciwnikstaty.imieprzeciwnik = 'Goblin'
-            self.przeciwnikstaty.slaboscii.slaboscognia = True
-            self.przeciwnikstaty.slaboscii.slaboscwody = True
-            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
-            self.przeciwnikstaty.slaboscii.slaboscziemi = False
-        if 'nimfa' in str(self.przeciwniktera):
-            self.przeciwnikstaty.imieprzeciwnik = 'Nimfa'
-            self.przeciwnikstaty.slaboscii.slaboscognia = False
-            self.przeciwnikstaty.slaboscii.slaboscwody = False
-            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
-            self.przeciwnikstaty.slaboscii.slaboscziemi = True
-        if 'rycerz' in str(self.przeciwniktera):
-            self.przeciwnikstaty.imieprzeciwnik = 'Rycerz'
-            self.przeciwnikstaty.slaboscii.slaboscognia = True
-            self.przeciwnikstaty.slaboscii.slaboscwody = True
-            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
-            self.przeciwnikstaty.slaboscii.slaboscziemi = True
-        if 'olbrzym' in str(self.przeciwniktera):
-            self.przeciwnikstaty.imieprzeciwnik = 'Olbrzym'
-            self.przeciwnikstaty.slaboscii.slaboscognia = False
-            self.przeciwnikstaty.slaboscii.slaboscwody = False
-            self.przeciwnikstaty.slaboscii.slaboscpowietrza = False
-            self.przeciwnikstaty.slaboscii.slaboscziemi = False
-
-class bitka:
-    def __init__(self) -> None:
-        self.gracz = gracz('',100,0,0,10,100,0,0)
-        self.enemy = currentenemy()
-        self.shop = sklep()
-        
     def ruda(self):
         self.gracz.hypy()
         sleep(3)
@@ -290,7 +288,7 @@ class bitka:
                 if los == 1:
                     print(f'\nGRATULACJE ZABIŁEŚ {str(self.enemy.przeciwniktera)[10:self.enemy.koniec()]} teraz nadciąga kolejny przeciwnik uważaj na siebie')
                     self.gracz.killcount += 1
-                    self.shop.rundawsklepie()
+                    self.rundawsklepie()
                     self.enemy.losojprzeciwnik()
                     self.ruda()
                 else:
